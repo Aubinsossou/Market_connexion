@@ -7,8 +7,6 @@ const icon_eye = document.querySelector(".icon_eye");
 const logout_btn = document.getElementById("logout");
 console.log(form);
 
-// Fonction pour l'inscricption
-
 /* if(window.location.href = "http://127.0.0.1:5500/login.html"){
     if(localStorage.getItem("token")){
       window.location.href = "http://127.0.0.1:5500/login.html"
@@ -20,13 +18,17 @@ console.log(form);
     }
   } */
 
+// Fonction pour l'inscricption
+
 function inscription() {
   const full_name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
   const confirm_password = document.getElementById("confirm_password").value;
+
+  //Remettre les messages d'erreur a un string vide
   message_error.forEach((item) => {
-    item.style.display = "none";
+    item.innerHTML = "";
   });
   if (
     full_name == "" ||
@@ -37,17 +39,17 @@ function inscription() {
     if (full_name == "") {
       console.log("Je suis dans nom");
       message_error[0].style.display = "block";
-      message_error[0].innerHTML = "Veillez remplir le champ nom et prénom";
+      message_error[0].innerHTML = "Veuillez remplir le champ nom et prénom";
     }
     if (email == "") {
       console.log("Je suis dans email");
       message_error[1].style.display = "block";
-      message_error[1].innerHTML = "Veillez remplir le champ email";
+      message_error[1].innerHTML = "Veuillez remplir le champ email";
     }
     if (password == "") {
       console.log("Je suis dans passwor");
       message_error[2].style.display = "block";
-      message_error[2].innerHTML = "Veillez remplir le champ password";
+      message_error[2].innerHTML = "Veuillez remplir le champ password";
     }
   } else {
     if (password !== confirm_password) {
@@ -84,11 +86,16 @@ function inscription() {
 const input = document.getElementById("login_password");
 
 //Voir et cacher le mot de passe
-icon_eye.addEventListener("click", function () {
-  input.type == "password" ? (input.type = "text") : (input.type = "password");
-});
+if (icon_eye) {
+  icon_eye.addEventListener("click", function () {
+    input.type == "password"
+      ? (input.type = "text")
+      : (input.type = "password");
+  });
+}
 
 // Function pour se connecter
+
 
 function login() {
   const data = localStorage.getItem("users");
@@ -98,17 +105,17 @@ function login() {
   console.log(users);
 
   login_message_error.forEach((item) => {
-    item.style.display = "none";
+    item.innerHTML = "";
   });
 
   if (login_email == "" || login_password == "") {
     if (login_email == "") {
       login_message_error[0].style.display = "block";
-      login_message_error[0].innerHTML = "Veillez remplir le champ email";
+      login_message_error[0].innerHTML = "Veuillez remplir le champ email";
     }
     if (login_password == "") {
       login_message_error[1].style.display = "block";
-      login_message_error[1].innerHTML = "Veillez remplir le champ password";
+      login_message_error[1].innerHTML = "Veuillez remplir le champ password";
     }
   } else if (login_email !== "" || login_password !== "") {
     let existed_user = users.filter((usr) => usr.email == login_email)[0];
@@ -126,16 +133,14 @@ function login() {
 }
 
 // Fonction se deconnecter
-
-function logout() {
-  logout_btn.addEventListener("click", function () {
-   
-   if(localStorage.getItem("token")){
-     //supprimer le token du navigateur
-    localStorage.removeItem("token");
-     window.location.href = "http://127.0.0.1:5500/login_in.html"
-   } 
-
+if (logout_btn) {
+  logout_btn.addEventListener("click", function (e) {
+    e.preventDefault();
+    if (localStorage.getItem("token")) {
+      //supprimer le token du navigateur
+      localStorage.removeItem("token");
+      window.location.href = "http://127.0.0.1:5500/login_in.html";
+    }
   });
 }
 
@@ -160,13 +165,29 @@ if (login_form) {
     login();
   });
 }
-/* if ((window.location.href = "http://127.0.0.1:5500/login.html")) {
-    if (user.token) {
-      window.location.href = "http://127.0.0.1:5500/login.html";
-      return;
-    } else {
-      window.location.href = "http://127.0.0.1:5500/login_in.html";
-      return;
-    }
+
+/* const url = window.location.pathname;
+console.log(url);
+if (url) {
+  const token = localStorage.getItem("token");
+  switch (url) {
+    case "/login.html":
+      if (token) {
+        window.location.href = "/login.html";
+        break
+      } else {
+        window.location.href = "/login_in.html";
+      }
+      break;
+    case "/login_in.html":
+      if (token) {
+        window.location.href = "/login.html";
+      } else {
+        window.location.href = "/login_in.html";
+      }
+      break;
+    default:
+      break;
   }
+}
  */
