@@ -11,7 +11,7 @@
       <section class="inscription">
         <div class="container">
           <div class="inscription_content">
-            <form action="" class="inscription_content_form">
+            <form action="" class="inscription_content_form" id="formulaire_inscription">
               <h2>Créer un compte</h2>
               <input
                 type="text"
@@ -19,14 +19,18 @@
                 id="name"
                 placeholder="Nom complet"
               />
+              <p class="message_error" style="display: none;"></p>
               <input type="email" id="email" placeholder="Adresse email" />
-              <input type="text" id="password" placeholder="Mot de passe" />
+              <p class="message_error" style="display: none;"></p>
+              <input type="password" id="password" placeholder="Mot de passe" />
+              <p class="message_error" style="display: none;"></p>
               <input
-                type="text"
+                type="password"
                 id="confirm_password"
                 placeholder="Confirmer le mot de passe"
               />
-              <button type="submit" id="button_inscription">S'inscricre</button>
+              <p class="message_error" style="display: none;"></p>
+              <div class="centrer_button"><button type="submit" id="button_inscription">S'inscricre</button></div>
               <p>Vous avez déjà un compte ?<span><a href="http://127.0.0.1:5500/login_in.html">Se connecter</a></span></p>
             </form>
           </div>

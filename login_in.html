@@ -11,12 +11,35 @@
       <section class="login">
         <div class="container">
           <div class="inscription_content">
-            <form action="" class="inscription_content_form" id="login_content_form">
+            <form
+              action=""
+              class="inscription_content_form"
+              id="login_content_form"
+            >
               <h2>Se connecter</h2>
 
-              <input type="email" id="login_email" placeholder="Adresse email" />
-              <input type="text" id="login_password" placeholder="Mot de passe" />
-              <button type="submit" id="button_connexion">Se connecter</button>
+              <input
+                type="email"
+                id="login_email"
+                placeholder="Adresse email"
+              />
+              <p class="login_message_error" style="display: none"></p>
+              <div>
+                <input
+                  type="password"
+                  id="login_password"
+                  placeholder="Mot de passe"
+                /><span
+                  ><img src="images/eye.png" alt="" class="icon_eye"
+                /></span>
+              </div>
+
+              <p class="login_message_error" style="display: none"></p>
+              <div class="centrer_button">
+                <button type="submit" id="button_connexion">
+                  Se connecter
+                </button>
+              </div>
               <p>
                 Vous n'avez pas un compte ?<span
                   ><a href="http://127.0.0.1:5500/login_Up.html"
