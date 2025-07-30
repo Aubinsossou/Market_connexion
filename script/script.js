@@ -1,13 +1,83 @@
-const form = document.getElementById("formulaire_inscription");
-const login_form = document.getElementById("login_content_form");
-const input_password = document.getElementById("password");
-const message_error = document.querySelectorAll(".message_error");
-const login_message_error = document.querySelectorAll(".login_message_error");
-const icon_eye = document.querySelectorAll(".icon_eye");
-const logout_btn = document.getElementById("logout");
-const title_page_acceuil = document.getElementById("title_page_acceuil");
+let User = {
+  form: document.getElementById("formulaire_inscription"),
+  login_form: document.getElementById("login_content_form"),
+  input_password: document.getElementById("password"),
+  message_error: document.querySelectorAll(".message_error"),
+  login_message_error: document.querySelectorAll(".login_message_error"),
+  icon_eye: document.querySelectorAll(".icon_eye"),
+  logout_btn: document.getElementById("logout"),
+  title_page_acceuil: document.getElementById("title_page_acceuil"),
+  full_name: document.getElementById("name").value,
+  email: document.getElementById("email").value,
+  password: document.getElementById("password").value,
+  confirm_password: document.getElementById("confirm_password").value,
+  inscription: () => {
+    //Remettre les messages d'erreur a un string vide
 
-console.log(title_page_acceuil);
+    if (User.message_error) {
+      User.message_error.forEach((item) => {
+        console.log("Name : "+document.getElementById("name").value)
+        console.log("Ligne : "+ item);
+        item.innerHTML = "";
+      });
+    }
+    if (
+      User.full_name == "" ||
+      User.email == "" ||
+      User.password == "" ||
+      User.confirm_password == ""
+    ) {
+      console.log("User.full_name : " + User.full_name)
+      if (User.full_name === "") {
+        console.log("Je suis dans nom");
+        User.message_error[0].style.display = "block";
+        User.message_error[0].innerHTML =
+          "Veuillez remplir le champ nom et prénom";
+      }
+      retun
+      if (User.email == "") {
+        console.log("Je suis dans email");
+        User.message_error[1].style.display = "block";
+        User.message_error[1].innerHTML = "Veuillez remplir le champ email";
+      }
+      if (User.password == "") {
+        console.log("Je suis dans password");
+        User.message_error[2].style.display = "block";
+        User.message_error[2].innerHTML = "Veuillez remplir le champ password";
+      }
+    } else {
+      if (User.password !== User.confirm_password) {
+        console.log("je suis dans le cas ou le confirme password est different du password");
+        alert("Les mots de passes sont différents");
+      } else {
+        console.log("je suis dans le sinon");
+        const user = {
+          fullname: User.full_name,
+          email: User.email,
+          password: User.password,
+        };
+
+        let users = [];
+        let oldUsers = localStorage.getItem("users");
+        if (oldUsers) {
+          // users = [...JSON.parse(oldUsers)]
+          users = JSON.parse(oldUsers);
+        }
+        const existed_email = users.filter((usr) => usr.email == User.email)[0];
+        if (existed_email) {
+          alert("Le mail existe déja");
+          return;
+        }
+
+        users.push(user);
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Inscription réussi");
+        console.log("Utilisateur enregistrer");
+        window.location.pathname = "/login_in.html";
+      }
+    }
+  },
+};
 
 /* if(window.location.href = "http://127.0.0.1:5500/login.html"){
       if(localStorage.getItem("token")){
@@ -42,69 +112,7 @@ console.log(title_page_acceuil);
 Verify_password();
 */
 
-function inscription() {
-  const full_name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirm_password = document.getElementById("confirm_password").value;
-
-  //Remettre les messages d'erreur a un string vide
-  message_error.forEach((item) => {
-    item.innerHTML = "";
-  });
-  if (
-    full_name == "" ||
-    email == "" ||
-    password == "" ||
-    confirm_password == ""
-  ) {
-    if (full_name == "") {
-      console.log("Je suis dans nom");
-      message_error[0].style.display = "block";
-      message_error[0].innerHTML = "Veuillez remplir le champ nom et prénom";
-    }
-    if (email == "") {
-      console.log("Je suis dans email");
-      message_error[1].style.display = "block";
-      message_error[1].innerHTML = "Veuillez remplir le champ email";
-    }
-    if (password == "") {
-      console.log("Je suis dans passwor");
-      message_error[2].style.display = "block";
-      message_error[2].innerHTML = "Veuillez remplir le champ password";
-    }
-  } else {
-    if (password !== confirm_password) {
-      console.log("je suis dans le si");
-      alert("Les mots de passes sont différents");
-    } else {
-      console.log("je suis dans le sinon");
-      const user = {
-        fullname: full_name,
-        email: email,
-        password: password,
-      };
-
-      let users = [];
-      let oldUsers = localStorage.getItem("users");
-      if (oldUsers) {
-        // users = [...JSON.parse(oldUsers)]
-        users = JSON.parse(oldUsers);
-      }
-      const existed_email = users.filter((usr) => usr.email == email)[0];
-      if (existed_email) {
-        alert("Le mail existe déja");
-        return;
-      }
-
-      users.push(user);
-      localStorage.setItem("users", JSON.stringify(users));
-      alert("Inscription réussi");
-      console.log("Utilisateur enregistrer");
-      window.location.href = "http://127.0.0.1:5500/login_in.html";
-    }
-  }
-}
+function inscription() {}
 const input = document.querySelectorAll(".eyeInput");
 
 //Voir et cacher le mot de passe
@@ -115,7 +123,7 @@ const input = document.querySelectorAll(".eyeInput");
       : input.type = "password";
   });
 } */
-if (icon_eye) {
+/* if (icon_eye) {
   icon_eye.forEach((icon) => {
     input.forEach((item) => {
       icon.addEventListener("click", (e) => {
@@ -125,7 +133,7 @@ if (icon_eye) {
       });
     });
   });
-}
+} */
 
 // Function pour se connecter
 
@@ -167,7 +175,7 @@ function login() {
 }
 
 // Fonction se deconnecter
-if (logout_btn) {
+/* if (logout_btn) {
   logout_btn.addEventListener("click", function (e) {
     e.preventDefault();
     if (localStorage.getItem("token")) {
@@ -177,7 +185,7 @@ if (logout_btn) {
     }
   });
 }
-
+ */
 /* function validateInscription() {
   const full_name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -186,20 +194,21 @@ if (logout_btn) {
 }
  */
 
-if (form) {
-  form.addEventListener("submit", function (e) {
+if (User.form) {
+  User.form.addEventListener("submit", function (e) {
     e.preventDefault();
-    inscription();
+    //User.full_name = document.getElementById("name").value
+    User.inscription();
   });
 }
-if (login_form) {
+/* if (login_form) {
   login_form.addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("je suis dans le login form");
     login();
   });
 }
-
+ */
 const url = window.location.pathname;
 const token = localStorage.getItem("token");
 
