@@ -15,50 +15,12 @@
     <button id="btn">Envoyer</button>
   </form>
 
+  <script type="module" src="script/test1.js"></script>
+  <script type="module" src="script/test2.js"></script>
   <script>
-    const formTag = document.querySelector("body form.form")
-    const prix_unitaire_input=formTag.querySelector("input[name='prix_unitaire']")
-    const quantite_input=formTag.querySelector("input[name='quantite']")
-    const paragraphe=formTag.querySelector(".result")
-    let produits = []
-    if(formTag){
-      formTag.addEventListener('submit', (e)=>{
-        e.preventDefault()
-        
-        const nameProduitTagValue = formTag.querySelector('input[name="name_produit"]').value
-        const prixUnitaireTagValue = formTag.querySelector('input[name="prix_unitaire"]').value
-        const quantiteTagValue = formTag.querySelector("input[name='quantite']" ).value
-        let prixTotal = prixUnitaireTagValue*quantiteTagValue
-       
-        let produit ={
-          "name Produit":nameProduitTagValue,
-          "prix_unitaire":prixUnitaireTagValue,
-          "quantite":quantiteTagValue,
-          "prixTotal":prixTotal,
-        }
-        console.log(produit)
-        
-         
-        produits.push(produit)
-        localStorage.setItem("produits",JSON.stringify(produits))
-         
-      })
-
-      let prix_unitaire=0
-      let quantite=0
-      if (prix_unitaire_input){
-        prix_unitaire_input.addEventListener('input',(e)=>{
-          prix_unitaire=e.target.value
-          paragraphe.innerHTML = `Total: ${prix_unitaire * quantite}`
-        })
-      }
-      if (quantite_input){
-        quantite_input.addEventListener('input',(e)=>{
-          quantite=e.target.value
-          paragraphe.innerHTML = `Total: ${prix_unitaire * quantite}`
-        })
-      }
-    }
+    
+    
+    
     
   </script>
   

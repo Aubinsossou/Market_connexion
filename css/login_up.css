@@ -73,13 +73,32 @@ form input {
 #button_inscription:hover{
   background-color: #0056b3;
 }
-.icon_eye{
-  width: 20px;
+.eyeTag{
+  position: relative;
   
-  top: 435px;
-  right: 805px;
+}
+.icon_eye{
+  position: absolute;
+  width: 20px;
   cursor: pointer;
+  right: 0;
+  top: 25px;
+
 }
 .message_error{
   color: red;
+}
+
+
+/*Page d'acceuil */
+#logout{
+  padding: 20px 50px;
+  color: white;
+  background-color: #007bff;
+  border-radius: 7px;
+  text-decoration: none;
+  font-weight: 900;
+}
+#logout:hover{
+   background-color: #0056b3;
 }

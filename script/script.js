@@ -3,22 +3,44 @@ const login_form = document.getElementById("login_content_form");
 const input_password = document.getElementById("password");
 const message_error = document.querySelectorAll(".message_error");
 const login_message_error = document.querySelectorAll(".login_message_error");
-const icon_eye = document.querySelector(".icon_eye");
+const icon_eye = document.querySelectorAll(".icon_eye");
 const logout_btn = document.getElementById("logout");
-console.log(form);
+const title_page_acceuil = document.getElementById("title_page_acceuil");
+
+console.log(title_page_acceuil);
 
 /* if(window.location.href = "http://127.0.0.1:5500/login.html"){
-    if(localStorage.getItem("token")){
-      window.location.href = "http://127.0.0.1:5500/login.html"
+      if(localStorage.getItem("token")){
+        window.location.href = "http://127.0.0.1:5500/login.html"
+        return
+      }
+      else if(){
+        window.location.href = "http://127.0.0.1:5500/login_in.html"
       return
-    }
-    else if(){
-      window.location.href = "http://127.0.0.1:5500/login_in.html"
-    return
-    }
-  } */
+      }
+    } */
 
 // Fonction pour l'inscricption
+
+/* if (input_password) {
+  function Verify_password() {
+    input_password.addEventListener("input", (e) => {
+      message_error[2].innerHTML = ""
+      console.log(input_password.value);
+      
+      if(input_password.value.length <=4){
+        message_error[2].style.display = "block";
+      message_error[2].innerHTML = "Mot de passe trop court et peu sur";
+      }
+       if(input_password.value.length >4 && ){
+        message_error[2].style.display = "block";
+      message_error[2].innerHTML = "Mot de passe  peu sur ";
+      }
+    });
+  }
+}
+Verify_password();
+*/
 
 function inscription() {
   const full_name = document.getElementById("name").value;
@@ -83,19 +105,29 @@ function inscription() {
     }
   }
 }
-const input = document.getElementById("login_password");
+const input = document.querySelectorAll(".eyeInput");
 
 //Voir et cacher le mot de passe
-if (icon_eye) {
+/* if (icon_eye) {
   icon_eye.addEventListener("click", function () {
     input.type == "password"
-      ? (input.type = "text")
-      : (input.type = "password");
+      ? input.type = "text"
+      : input.type = "password";
+  });
+} */
+if (icon_eye) {
+  icon_eye.forEach((icon) => {
+    input.forEach((item) => {
+      icon.addEventListener("click", (e) => {
+        item.type == "password"
+          ? (item.type = "text")
+          : (item.type = "password");
+      });
+    });
   });
 }
 
 // Function pour se connecter
-
 
 function login() {
   const data = localStorage.getItem("users");
@@ -118,11 +150,13 @@ function login() {
       login_message_error[1].innerHTML = "Veuillez remplir le champ password";
     }
   } else if (login_email !== "" || login_password !== "") {
-    let existed_user = users.filter((usr) => usr.email == login_email)[0];
+    let existed_user = users.find((usr) => usr.email == login_email);
     if (existed_user && login_password == existed_user.password) {
       localStorage.setItem("token", "fake_token");
-      if (localStorage.getItem("token")) {
-        window.location.href = "http://127.0.0.1:5500/login.html";
+      window.location.href = "http://127.0.0.1:5500/login.html";
+      console.log("Je suis sur ma page d'acceuil");
+      if (title_page_acceuil) {
+        title_page_acceuil.innerHTML = `Bienvenu Mr ${existed_user.full_name} Merci de vous êtes connecter`;
       }
     } else {
       alert("Votre email ou mot de passe est incorrect");
@@ -166,28 +200,11 @@ if (login_form) {
   });
 }
 
-/* const url = window.location.pathname;
-console.log(url);
-if (url) {
-  const token = localStorage.getItem("token");
-  switch (url) {
-    case "/login.html":
-      if (token) {
-        window.location.href = "/login.html";
-        break
-      } else {
-        window.location.href = "/login_in.html";
-      }
-      break;
-    case "/login_in.html":
-      if (token) {
-        window.location.href = "/login.html";
-      } else {
-        window.location.href = "/login_in.html";
-      }
-      break;
-    default:
-      break;
-  }
+const url = window.location.pathname;
+const token = localStorage.getItem("token");
+
+if (url == "/login.html" && !token) {
+  window.location.href = "/login_in.html";
+} else if (url == "/login_in.html" && token) {
+  window.location.href = "/login.html";
 }
- */
