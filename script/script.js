@@ -1,4 +1,4 @@
-let User = {
+const User = {
   form: document.getElementById("formulaire_inscription"),
   login_form: document.getElementById("login_content_form"),
   input_password: document.getElementById("password"),
