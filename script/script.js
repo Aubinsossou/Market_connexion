@@ -79,51 +79,11 @@ const User = {
   },
 };
 
-/* if(window.location.href = "http://127.0.0.1:5500/login.html"){
-      if(localStorage.getItem("token")){
-        window.location.href = "http://127.0.0.1:5500/login.html"
-        return
-      }
-      else if(){
-        window.location.href = "http://127.0.0.1:5500/login_in.html"
-      return
-      }
-    } */
 
-// Fonction pour l'inscricption
-
-/* if (input_password) {
-  function Verify_password() {
-    input_password.addEventListener("input", (e) => {
-      message_error[2].innerHTML = ""
-      console.log(input_password.value);
-      
-      if(input_password.value.length <=4){
-        message_error[2].style.display = "block";
-      message_error[2].innerHTML = "Mot de passe trop court et peu sur";
-      }
-       if(input_password.value.length >4 && ){
-        message_error[2].style.display = "block";
-      message_error[2].innerHTML = "Mot de passe  peu sur ";
-      }
-    });
-  }
-}
-Verify_password();
-*/
-
-function inscription() {}
+/*
 const input = document.querySelectorAll(".eyeInput");
 
-//Voir et cacher le mot de passe
-/* if (icon_eye) {
-  icon_eye.addEventListener("click", function () {
-    input.type == "password"
-      ? input.type = "text"
-      : input.type = "password";
-  });
-} */
-/* if (icon_eye) {
+ if (icon_eye) {
   icon_eye.forEach((icon) => {
     input.forEach((item) => {
       icon.addEventListener("click", (e) => {
@@ -135,7 +95,7 @@ const input = document.querySelectorAll(".eyeInput");
   });
 } */
 
-// Function pour se connecter
+
 
 function login() {
   const data = localStorage.getItem("users");
@@ -184,13 +144,6 @@ function login() {
       window.location.href = "http://127.0.0.1:5500/login_in.html";
     }
   });
-}
- */
-/* function validateInscription() {
-  const full_name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirm_password = document.getElementById("confirm_password").value;
 }
  */
 
