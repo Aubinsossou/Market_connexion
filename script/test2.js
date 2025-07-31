@@ -1,4 +1,4 @@
-class Car{
+/* class Car{
     constructor(car_name, car_color,car_model){
         this.car_name = car_name ?? "MBW"
         this.car_color = car_color ?? "Verte"
@@ -18,3 +18,4 @@ class Car{
 }
 const car = new Car('mercedes','rouge')
 export default car
+ */

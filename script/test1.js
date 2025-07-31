@@ -1,4 +1,4 @@
-import car from "./test2.js"
+/* import car from "./test2.js"
 
 const User = {
     name:"Silvio",
@@ -11,4 +11,4 @@ const User = {
 
 export default User
 
-car.login()
+car.login() */
