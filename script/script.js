@@ -155,13 +155,26 @@ const User = {
           console.log("redirection")
       })
     }
-  }
+  },
+  verifyUrl:()=>{
+    const token = localStorage.getItem("token")
+    console.log(token);
+    if(token){
+      window.location.href="login.html"
+    }else{
+      window.location.href="login_in.html" 
+    }
+    /* if(window.location.href="/login.html" && !localStorage.getItem("token")){
+      window.location.href="login_in.html" 
+    }
+    else if(window.location.href="/login.html" && localStorage.getItem("token"))
+    {
+      window.location.href="login.html"
+    } */
+  },
 };
 User.inscription();
 User.login();
 User.logout();
 //export default User;
 
-if(window.location.href="login.html"){
- localStorage.getItem("token") ? window.location.href="login.html" : window.location.href="login_in.html" 
-}
