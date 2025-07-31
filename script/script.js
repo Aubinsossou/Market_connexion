@@ -107,56 +107,61 @@ const User = {
     if (loginForm) {
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
-
         const loginEmailValue = document.getElementById("login_email").value;
         const loginPasswordValue =
-          document.getElementById("login_password").value;
+        document.getElementById("login_password").value;
 
         // Remettre a "" les messages d'erreur
-        if (login_message_error) {
-          login_message_error.forEach((item) => {
-            item.innerHTML = "";
-          });
-        }
 
         if (login_message_error) {
+          login_message_error.forEach(item => item.innerHTML = "")
+
           if (loginEmailValue === "" || loginPasswordValue === "") {
             if (loginEmailValue === "") {
-              if (login_message_error) {
-                login_message_error[0].style.display = "block";
-                login_message_error[0].innerHTML =
-                  "Veillez remplir le champ email";
-              }
+              login_message_error[0].style.display = "block";
+              login_message_error[0].innerHTML = "Veillez remplir le champ email";
             }
             if (loginPasswordValue === "") {
-              if (login_message_error) {
-                login_message_error[1].style.display = "block";
-                login_message_error[1].innerHTML =
-                  "Veillez remplir le champ mot de passe";
-              }
+              login_message_error[1].style.display = "block";
+              login_message_error[1].innerHTML = "Veillez remplir le champ mot de passe";
             }
           }
           console.log("Je suis dans le cas ou les 2 input sont remplit");
-            const users = User.initRegisterData();
-            const userExists = users.find(
-              (user) => user.email === loginEmailValue
-            );
-            console.log(loginEmailValue)
-            console.log(userExists);
-            if (userExists && userExists.password === loginPasswordValue) {
-              const token="fakeToken"
-              localStorage.setItem("token",JSON.stringify(token))
-              console.log("Connexion réussi");
-              window.location.pathname = "/login.html";
-            } else {
-              alert("L'email ou le mot de passe est incorrect");
-            }
+          const users = User.initRegisterData();
+          const userExists = users.find(
+            (user) => user.email === loginEmailValue
+          ); 
+          console.log(loginEmailValue);
+          console.log(userExists);
+          if (userExists && userExists.password === loginPasswordValue) {
+            const token = "fakeToken";
+            localStorage.setItem("token", JSON.stringify(token));
+            console.log("Connexion réussi");
+            window.location.pathname = "/login.html";
+          } else {
+            alert("L'email ou le mot de passe est incorrect");
+          }
         }
       });
     }
   },
+  logout:()=>{
+    const logout=document.getElementById("logout");
+    if(logout){
+      logout.addEventListener("click", (e)=>{
+        e.preventDefault();
+          localStorage.removeItem("token")
+          window.location.href="/login_in.html"
+          console.log("redirection")
+      })
+    }
+  }
 };
 User.inscription();
 User.login();
-
+User.logout();
 //export default User;
+
+if(window.location.href="login.html"){
+ localStorage.getItem("token") ? window.location.href="login.html" : window.location.href="login_in.html" 
+}
