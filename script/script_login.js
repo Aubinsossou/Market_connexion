@@ -1,4 +1,4 @@
-import User from "./script.js";
+/* import User from "./script.js";
 User.initRegisterData()
 
-console.log(localStorage.getItem("users['password']"))
+console.log(localStorage.getItem("users['password']")) */

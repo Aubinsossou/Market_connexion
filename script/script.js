@@ -103,12 +103,15 @@ const User = {
     const login_message_error = document.querySelectorAll(
       ".login_message_error"
     );
+
     if (loginForm) {
       loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
         const loginEmailValue = document.getElementById("login_email").value;
         const loginPasswordValue =
           document.getElementById("login_password").value;
+
         // Remettre a "" les messages d'erreur
         if (login_message_error) {
           login_message_error.forEach((item) => {
@@ -133,6 +136,19 @@ const User = {
               }
             }
           }
+          console.log("Je suis dans le cas ou les 2 input sont remplit");
+            const users = User.initRegisterData();
+            const userExists = users.find(
+              (user) => user.email === loginEmailValue
+            );
+            console.log(loginEmailValue)
+            console.log(userExists);
+            if (userExists && userExists.password === loginPasswordValue) {
+              console.log("Connexion réussi");
+              window.location.pathname = "/login.html";
+            } else {
+              alert("L'email ou le mot de passe est incorrect");
+            }
         }
       });
     }
@@ -141,4 +157,4 @@ const User = {
 User.inscription();
 User.login();
 
-export default User;
+//export default User;
