@@ -158,23 +158,18 @@ const User = {
   },
   verifyUrl:()=>{
     const token = localStorage.getItem("token")
+    const url= window.location.pathname
     console.log(token);
-    if(token){
+    if(url=="/lgin.html" && token){
       window.location.href="login.html"
-    }else{
+    }else if (url == "/login.html" && !token){
       window.location.href="login_in.html" 
     }
-    /* if(window.location.href="/login.html" && !localStorage.getItem("token")){
-      window.location.href="login_in.html" 
-    }
-    else if(window.location.href="/login.html" && localStorage.getItem("token"))
-    {
-      window.location.href="login.html"
-    } */
   },
 };
 User.inscription();
 User.login();
 User.logout();
+User.verifyUrl();
 //export default User;
 
