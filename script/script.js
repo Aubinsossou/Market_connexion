@@ -144,6 +144,8 @@ const User = {
             console.log(loginEmailValue)
             console.log(userExists);
             if (userExists && userExists.password === loginPasswordValue) {
+              const token="fakeToken"
+              localStorage.setItem("token",JSON.stringify(token))
               console.log("Connexion réussi");
               window.location.pathname = "/login.html";
             } else {
