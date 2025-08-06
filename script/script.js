@@ -111,6 +111,13 @@ const User = {
         const loginPasswordValue =
         document.getElementById("login_password").value;
 
+
+        /*Connexion admin*/
+         if (loginEmailValue == "boris@gmail.com" && loginPasswordValue == "toto") {
+          console.log("ma page admin")
+            window.location.href="dashboard.html"
+         }
+
         // Remettre a "" les messages d'erreur
 
         if (login_message_error) {
@@ -137,7 +144,7 @@ const User = {
             const token = "fakeToken";
             localStorage.setItem("token", JSON.stringify(token));
             console.log("Connexion réussi");
-            window.location.pathname = "/login.html";
+            window.location.pathname = "/dashboard.html";
           } else {
             alert("L'email ou le mot de passe est incorrect");
           }
@@ -160,16 +167,33 @@ const User = {
     const token = localStorage.getItem("token")
     const url= window.location.pathname
     console.log(token);
-    if(url=="/lgin.html" && token){
+    if(url=="/login.html" && token){
       window.location.href="login.html"
     }else if (url == "/login.html" && !token){
       window.location.href="login_in.html" 
     }
   },
+  eye_password:()=>{
+    const icon_eye=document.querySelectorAll(".icon_eye")
+    const eyeInput=document.querySelectorAll(".eyeInput")
+    if(icon_eye && eyeInput){
+      icon_eye.forEach((item)=>{
+       item.addEventListener("click",(e)=>{
+        e.preventDefault();
+         eyeInput.forEach((element)=>{
+          console.log("je l'ai passé a text")
+          element.type=="password" ? element.type="text" : element.type="password"
+        })
+       })
+        
+      })
+    }
+  }
 };
 User.inscription();
 User.login();
 User.logout();
 User.verifyUrl();
+User.eye_password();
 //export default User;
 
