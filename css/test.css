@@ -1,0 +1,27 @@
+.form{
+  width: 500px;
+  margin: 60px auto;
+  padding:25px;
+  display: flex;
+  flex-direction: column;
+  gap:25px;
+  background-color: silver;
+}
+.form input {
+  height: 40px;
+  width: 100%;
+  border-radius: 6px;
+  padding-left: 10px;
+  background-color: #fff;
+}
+.form input:focus{
+  outline: none;
+}
+
+.form button{
+  padding:20px;
+  background-color: blue;
+  color:#fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+}

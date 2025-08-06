@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page admin</title>
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <header class="header"></header>
+    <main class="main">
+      <section class="menu">
+        <div class="menu_content">
+          <a href="/accueil.html"> Menu administateur</a>
+          <a href="/accueil.html">Accueil</a>
+          <a href="/dashboard.html" >Produits</a>
+        </div>
+      </section>
+      <section class="bloc_1">
+        <div class="bloc_1_content">
+          <div class="bloc_1_content_header">
+            <h2>Liste des Produits</h2>
+            <a href="/login_in.html" class="logout">Se déconnecter</a>
+          </div>
+          <a href="/add_product.html" class="add_product">Ajout produit</a>
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody class="product_list">
+             
+            </tbody>
+            <tfoot></tfoot>
+          </table>
+        </div>
+      </section>
+    </main>
+    <footer class="footer"></footer>
+    <script src="script/dashboard.js"></script>
+  </body>
+</html>
