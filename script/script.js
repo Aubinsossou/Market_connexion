@@ -181,7 +181,7 @@ const User = {
        item.addEventListener("click",(e)=>{
         e.preventDefault();
          eyeInput.forEach((element)=>{
-          console.log("je l'ai passé a text")
+          
           element.type=="password" ? element.type="text" : element.type="password"
         })
        })
